@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)https://mortenknudsen.net/?p=525 -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<style>
+#wpadminbar #wp-admin-bar-wsm_top_button .ab-icon:before {
+	content: "\f239";
+	color: #FF9800;
+	top: 3px;
+}
+</style><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- This site is optimized with the Yoast SEO plugin v19.13 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Sentinel Alert Rules Management with Add / Update / Remove &amp; Alert Rule Action automation - Blog by Morten Knudsen about Microsoft Security, Azure, M365 &amp; Automation</title>
+	<link rel="canonical" href="https://mortenknudsen.net/?p=525">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Sentinel Alert Rules Management with Add / Update / Remove &amp; Alert Rule Action automation - Blog by Morten Knudsen about Microsoft Security, Azure, M365 &amp; Automation">
+	<meta property="og:description" content="Do you want to automate alert rules including creating new alert rules and update existing – with checks every x ... Read more">
+	<meta property="og:url" content="https://mortenknudsen.net/?p=525">
+	<meta property="og:site_name" content="Blog by Morten Knudsen about Microsoft Security, Azure, M365 &amp; Automation">
+	<meta property="article:published_time" content="2023-01-09T00:15:46+00:00">
+	<meta property="article:modified_time" content="2023-01-09T12:46:23+00:00">
+	<meta property="og:image" content="https://mortenknudsen.net/wp-content/uploads/2023/01/UpdateAlertRule-3.jpg">
+	<meta property="og:image:width" content="799">
+	<meta property="og:image:height" content="421">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta name="author" content="Morten Knudsen">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:label1" content="Written by">
+	<meta name="twitter:data1" content="Morten Knudsen">
+	<meta name="twitter:label2" content="Est. reading time">
+	<meta name="twitter:data2" content="10 minutes">
+	<script type="text/javascript" async="" defer="" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/wsm_new.js.download"></script><script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://mortenknudsen.net/?p=525#article","isPartOf":{"@id":"https://mortenknudsen.net/?p=525"},"author":{"name":"Morten Knudsen","@id":"https://mortenknudsen.net/#/schema/person/9969b51bf000422714adda129055eb0d"},"headline":"Sentinel Alert Rules Management with Add / Update / Remove &#038; Alert Rule Action automation","datePublished":"2023-01-09T00:15:46+00:00","dateModified":"2023-01-09T12:46:23+00:00","mainEntityOfPage":{"@id":"https://mortenknudsen.net/?p=525"},"wordCount":1107,"commentCount":0,"publisher":{"@id":"https://mortenknudsen.net/#/schema/person/9969b51bf000422714adda129055eb0d"},"image":{"@id":"https://mortenknudsen.net/?p=525#primaryimage"},"thumbnailUrl":"https://mortenknudsen.net/wp-content/uploads/2023/01/UpdateAlertRule-3.jpg","keywords":["Alert Rules","Create","Manage","Management","Remove","Sentinel","Update"],"articleSection":["Azure","Sentinel"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://mortenknudsen.net/?p=525#respond"]}]},{"@type":"WebPage","@id":"https://mortenknudsen.net/?p=525","url":"https://mortenknudsen.net/?p=525","name":"Sentinel Alert Rules Management with Add / Update / Remove & Alert Rule Action automation - Blog by Morten Knudsen about Microsoft Security, Azure, M365 &amp; Automation","isPartOf":{"@id":"https://mortenknudsen.net/#website"},"primaryImageOfPage":{"@id":"https://mortenknudsen.net/?p=525#primaryimage"},"image":{"@id":"https://mortenknudsen.net/?p=525#primaryimage"},"thumbnailUrl":"https://mortenknudsen.net/wp-content/uploads/2023/01/UpdateAlertRule-3.jpg","datePublished":"2023-01-09T00:15:46+00:00","dateModified":"2023-01-09T12:46:23+00:00","breadcrumb":{"@id":"https://mortenknudsen.net/?p=525#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://mortenknudsen.net/?p=525"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://mortenknudsen.net/?p=525#primaryimage","url":"https://mortenknudsen.net/wp-content/uploads/2023/01/UpdateAlertRule-3.jpg","contentUrl":"https://mortenknudsen.net/wp-content/uploads/2023/01/UpdateAlertRule-3.jpg","width":799,"height":421},{"@type":"BreadcrumbList","@id":"https://mortenknudsen.net/?p=525#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mortenknudsen.net/"},{"@type":"ListItem","position":2,"name":"Sentinel Alert Rules Management with Add / Update / Remove &#038; Alert Rule Action automation"}]},{"@type":"WebSite","@id":"https://mortenknudsen.net/#website","url":"https://mortenknudsen.net/","name":"Blog by Morten Knudsen about Microsoft Security, Azure, M365 &amp; Automation","description":"Microsoft | Azure | Security | M365 | Automation","publisher":{"@id":"https://mortenknudsen.net/#/schema/person/9969b51bf000422714adda129055eb0d"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://mortenknudsen.net/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":["Person","Organization"],"@id":"https://mortenknudsen.net/#/schema/person/9969b51bf000422714adda129055eb0d","name":"Morten Knudsen","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://mortenknudsen.net/#/schema/person/image/","url":"https://mortenknudsen.net/wp-content/uploads/2022/12/MOK_casual.jpg","contentUrl":"https://mortenknudsen.net/wp-content/uploads/2022/12/MOK_casual.jpg","width":2362,"height":2362,"caption":"Morten Knudsen"},"logo":{"@id":"https://mortenknudsen.net/#/schema/person/image/"},"sameAs":["http://mortenknudsen.net"],"url":"https://mortenknudsen.net/?author=1"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link href="https://fonts.gstatic.com/" crossorigin="" rel="preconnect">
+<link href="https://fonts.googleapis.com/" crossorigin="" rel="preconnect">
+<link rel="alternate" type="application/rss+xml" title="Blog by Morten Knudsen about Microsoft Security, Azure, M365 &amp; Automation » Feed" href="https://mortenknudsen.net/?feed=rss2">
+<link rel="alternate" type="application/rss+xml" title="Blog by Morten Knudsen about Microsoft Security, Azure, M365 &amp; Automation » Comments Feed" href="https://mortenknudsen.net/?feed=comments-rss2">
+<link rel="alternate" type="application/rss+xml" title="Blog by Morten Knudsen about Microsoft Security, Azure, M365 &amp; Automation » Sentinel Alert Rules Management with Add / Update / Remove &amp; Alert Rule Action automation Comments Feed" href="https://mortenknudsen.net/?feed=rss2&amp;p=525">
+<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/mortenknudsen.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.1.1"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script><script src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+<style>
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/style.min.css" media="all">
+<style id="wp-block-library-inline-css">
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel="stylesheet" id="mediaelement-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/mediaelementplayer-legacy.min.css" media="all">
+<link rel="stylesheet" id="wp-mediaelement-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/wp-mediaelement.min.css" media="all">
+<link rel="stylesheet" id="classic-theme-styles-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/classic-themes.min.css" media="all">
+<style id="global-styles-inline-css">
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--contrast: var(--contrast);--wp--preset--color--contrast-2: var(--contrast-2);--wp--preset--color--contrast-3: var(--contrast-3);--wp--preset--color--base: var(--base);--wp--preset--color--base-2: var(--base-2);--wp--preset--color--base-3: var(--base-3);--wp--preset--color--accent: var(--accent);--wp--preset--color--accent-2: var(--accent-2);--wp--preset--color--accent-hover: var(--accent-hover);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel="stylesheet" id="wsm-style-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/style.css" media="all">
+<link rel="stylesheet" id="generate-comments-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/comments.min.css" media="all">
+<link rel="stylesheet" id="generate-widget-areas-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/widget-areas.min.css" media="all">
+<link rel="stylesheet" id="generate-style-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/main.min.css" media="all">
+<style id="generate-style-inline-css">
+body{background-color:var(--base);color:var(--contrast);}a{color:#1b78e2;}a:hover, a:focus, a:active{color:var(--accent-hover);}.wp-block-group__inner-container{max-width:1200px;margin-left:auto;margin-right:auto;}.navigation-search{position:absolute;left:-99999px;pointer-events:none;visibility:hidden;z-index:20;width:100%;top:0;transition:opacity 100ms ease-in-out;opacity:0;}.navigation-search.nav-search-active{left:0;right:0;pointer-events:auto;visibility:visible;opacity:1;}.navigation-search input[type="search"]{outline:0;border:0;vertical-align:bottom;line-height:1;opacity:0.9;width:100%;z-index:20;border-radius:0;-webkit-appearance:none;height:60px;}.navigation-search input::-ms-clear{display:none;width:0;height:0;}.navigation-search input::-ms-reveal{display:none;width:0;height:0;}.navigation-search input::-webkit-search-decoration, .navigation-search input::-webkit-search-cancel-button, .navigation-search input::-webkit-search-results-button, .navigation-search input::-webkit-search-results-decoration{display:none;}.gen-sidebar-nav .navigation-search{top:auto;bottom:0;}:root{--contrast:#212121;--contrast-2:#2f4468;--contrast-3:#878787;--base:#fafafa;--base-2:#f7f8f9;--base-3:#ffffff;--accent:#242226;--accent-2:#1b78e2;--accent-hover:#35343a;}.has-contrast-color{color:var(--contrast);}.has-contrast-background-color{background-color:var(--contrast);}.has-contrast-2-color{color:var(--contrast-2);}.has-contrast-2-background-color{background-color:var(--contrast-2);}.has-contrast-3-color{color:var(--contrast-3);}.has-contrast-3-background-color{background-color:var(--contrast-3);}.has-base-color{color:var(--base);}.has-base-background-color{background-color:var(--base);}.has-base-2-color{color:var(--base-2);}.has-base-2-background-color{background-color:var(--base-2);}.has-base-3-color{color:var(--base-3);}.has-base-3-background-color{background-color:var(--base-3);}.has-accent-color{color:var(--accent);}.has-accent-background-color{background-color:var(--accent);}.has-accent-2-color{color:var(--accent-2);}.has-accent-2-background-color{background-color:var(--accent-2);}.has-accent-hover-color{color:var(--accent-hover);}.has-accent-hover-background-color{background-color:var(--accent-hover);}body, button, input, select, textarea{font-family:Open Sans, sans-serif;font-size:17px;}.main-title{font-size:25px;}.widget-title{font-weight:600;}button:not(.menu-toggle),html input[type="button"],input[type="reset"],input[type="submit"],.button,.wp-block-button .wp-block-button__link{font-size:15px;}h1{font-weight:600;font-size:40px;}h2{font-weight:600;font-size:30px;}h3{font-size:20px;}.top-bar{background-color:var(--accent-2);color:#ffffff;}.top-bar a{color:#ffffff;}.top-bar a:hover{color:#303030;}.site-header{background-color:#ffffff;color:#3a3a3a;}.site-header a{color:#3a3a3a;}.main-title a,.main-title a:hover{color:#ffffff;}.site-description{color:#757575;}.main-navigation,.main-navigation ul ul{background-color:var(--accent);}.main-navigation .main-nav ul li a, .main-navigation .menu-toggle, .main-navigation .menu-bar-items{color:var(--base-3);}.main-navigation .main-nav ul li:not([class*="current-menu-"]):hover > a, .main-navigation .main-nav ul li:not([class*="current-menu-"]):focus > a, .main-navigation .main-nav ul li.sfHover:not([class*="current-menu-"]) > a, .main-navigation .menu-bar-item:hover > a, .main-navigation .menu-bar-item.sfHover > a{color:var(--base-3);background-color:var(--accent-hover);}button.menu-toggle:hover,button.menu-toggle:focus{color:var(--base-3);}.main-navigation .main-nav ul li[class*="current-menu-"] > a{color:var(--base-3);background-color:var(--accent-hover);}.navigation-search input[type="search"],.navigation-search input[type="search"]:active, .navigation-search input[type="search"]:focus, .main-navigation .main-nav ul li.search-item.active > a, .main-navigation .menu-bar-items .search-item.active > a{color:var(--base-3);background-color:var(--accent-hover);}.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .one-container .container, .separate-containers .paging-navigation, .inside-page-header{background-color:var(--base-3);}.inside-article a,.paging-navigation a,.comments-area a,.page-header a{color:var(--accent-2);}.inside-article a:hover,.paging-navigation a:hover,.comments-area a:hover,.page-header a:hover{color:var(--accent-hover);}.entry-title a{color:var(--contrast-2);}.entry-title a:hover{color:var(--accent-hover);}.entry-meta{color:var(--contrast-3);}.entry-meta a{color:var(--contrast-2);}.entry-meta a:hover{color:var(--accent-hover);}h1{color:var(--contrast-2);}h2{color:var(--contrast-2);}h3{color:var(--contrast-2);}.sidebar .widget{background-color:#ffffff;}.sidebar .widget a{color:var(--accent-2);}.sidebar .widget a:hover{color:var(--accent-hover);}.sidebar .widget .widget-title{color:#000000;}.footer-widgets{color:var(--base-3);background-color:var(--contrast-2);}.footer-widgets a{color:var(--base-3);}.footer-widgets a:hover{color:var(--base-3);}.footer-widgets .widget-title{color:var(--base-2);}.site-info{color:var(--contrast-2);}.site-info a{color:var(--contrast-2);}.site-info a:hover{color:var(--accent-hover);}.footer-bar .widget_nav_menu .current-menu-item a{color:var(--accent-hover);}input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="tel"],input[type="number"],textarea,select{color:var(--contrast);background-color:#fafafa;border-color:var(--contrast);}input[type="text"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="number"]:focus,textarea:focus,select:focus{color:var(--contrast-3);background-color:#ffffff;border-color:var(--contrast-3);}button,html input[type="button"],input[type="reset"],input[type="submit"],a.button,a.wp-block-button__link:not(.has-background){color:#ffffff;background-color:var(--accent);}button:hover,html input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,a.button:hover,button:focus,html input[type="button"]:focus,input[type="reset"]:focus,input[type="submit"]:focus,a.button:focus,a.wp-block-button__link:not(.has-background):active,a.wp-block-button__link:not(.has-background):focus,a.wp-block-button__link:not(.has-background):hover{color:#ffffff;background-color:var(--accent-hover);}a.generate-back-to-top{background-color:rgba( 0,0,0,0.4 );color:#ffffff;}a.generate-back-to-top:hover,a.generate-back-to-top:focus{background-color:rgba( 0,0,0,0.6 );color:#ffffff;}@media (max-width: 768px){.main-navigation .menu-bar-item:hover > a, .main-navigation .menu-bar-item.sfHover > a{background:none;color:var(--base-3);}}.inside-top-bar{padding:10px;}.inside-header{padding:40px;}.nav-below-header .main-navigation .inside-navigation.grid-container, .nav-above-header .main-navigation .inside-navigation.grid-container{padding:0px 20px 0px 20px;}.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content, .inside-page-header{padding:50px;}.site-main .wp-block-group__inner-container{padding:50px;}.separate-containers .paging-navigation{padding-top:20px;padding-bottom:20px;}.entry-content .alignwide, body:not(.no-sidebar) .entry-content .alignfull{margin-left:-50px;width:calc(100% + 100px);max-width:calc(100% + 100px);}.one-container.right-sidebar .site-main,.one-container.both-right .site-main{margin-right:50px;}.one-container.left-sidebar .site-main,.one-container.both-left .site-main{margin-left:50px;}.one-container.both-sidebars .site-main{margin:0px 50px 0px 50px;}.one-container.archive .post:not(:last-child):not(.is-loop-template-item), .one-container.blog .post:not(:last-child):not(.is-loop-template-item){padding-bottom:50px;}.main-navigation .main-nav ul li a,.menu-toggle,.main-navigation .menu-bar-item > a{line-height:65px;}.navigation-search input[type="search"]{height:65px;}.rtl .menu-item-has-children .dropdown-menu-toggle{padding-left:20px;}.rtl .main-navigation .main-nav ul li.menu-item-has-children > a{padding-right:20px;}.widget-area .widget{padding:50px;}.inside-site-info{padding:20px;}@media (max-width:768px){.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content, .inside-page-header{padding:30px;}.site-main .wp-block-group__inner-container{padding:30px;}.inside-site-info{padding-right:10px;padding-left:10px;}.entry-content .alignwide, body:not(.no-sidebar) .entry-content .alignfull{margin-left:-30px;width:calc(100% + 60px);max-width:calc(100% + 60px);}.one-container .site-main .paging-navigation{margin-bottom:20px;}}/* End cached CSS */.is-right-sidebar{width:30%;}.is-left-sidebar{width:25%;}.site-content .content-area{width:70%;}@media (max-width: 768px){.main-navigation .menu-toggle,.sidebar-nav-mobile:not(#sticky-placeholder){display:block;}.main-navigation ul,.gen-sidebar-nav,.main-navigation:not(.slideout-navigation):not(.toggled) .main-nav > ul,.has-inline-mobile-toggle #site-navigation .inside-navigation > *:not(.navigation-search):not(.main-nav){display:none;}.nav-align-right .inside-navigation,.nav-align-center .inside-navigation{justify-content:space-between;}}
+.main-navigation .main-nav ul li a,.menu-toggle,.main-navigation .menu-bar-item > a{transition: line-height 300ms ease}.main-navigation.toggled .main-nav > ul{background-color: var(--accent)}.sticky-enabled .gen-sidebar-nav.is_stuck .main-navigation {margin-bottom: 0px;}.sticky-enabled .gen-sidebar-nav.is_stuck {z-index: 500;}.sticky-enabled .main-navigation.is_stuck {box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .2);}.navigation-stick:not(.gen-sidebar-nav) {left: 0;right: 0;width: 100% !important;}.nav-float-right .navigation-stick {width: 100% !important;left: 0;}.nav-float-right .navigation-stick .navigation-branding {margin-right: auto;}.main-navigation.has-sticky-branding:not(.grid-container) .inside-navigation:not(.grid-container) .navigation-branding{margin-left: 10px;}
+</style>
+<link rel="stylesheet" id="generate-google-fonts-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/css" media="all">
+<link rel="stylesheet" id="recent-posts-widget-with-thumbnails-public-style-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/public.css" media="all">
+<link rel="stylesheet" id="generate-blog-images-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/featured-images.min.css" media="all">
+<link rel="stylesheet" id="generate-navigation-branding-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/navigation-branding-flex.min.css" media="all">
+<style id="generate-navigation-branding-inline-css">
+@media (max-width: 768px){.site-header, #site-navigation, #sticky-navigation{display:none !important;opacity:0.0;}#mobile-header{display:block !important;width:100% !important;}#mobile-header .main-nav > ul{display:none;}#mobile-header.toggled .main-nav > ul, #mobile-header .menu-toggle, #mobile-header .mobile-bar-items{display:block;}#mobile-header .main-nav{-ms-flex:0 0 100%;flex:0 0 100%;-webkit-box-ordinal-group:5;-ms-flex-order:4;order:4;}}.main-navigation.has-branding .inside-navigation.grid-container, .main-navigation.has-branding.grid-container .inside-navigation:not(.grid-container){padding:0px 50px 0px 50px;}.main-navigation.has-branding:not(.grid-container) .inside-navigation:not(.grid-container) .navigation-branding{margin-left:10px;}.navigation-branding img, .site-logo.mobile-header-logo img{height:65px;width:auto;}.navigation-branding .main-title{line-height:65px;}@media (max-width: 768px){.main-navigation.has-branding.nav-align-center .menu-bar-items, .main-navigation.has-sticky-branding.navigation-stick.nav-align-center .menu-bar-items{margin-left:auto;}.navigation-branding{margin-right:auto;margin-left:10px;}.navigation-branding .main-title, .mobile-header-navigation .site-logo{margin-left:10px;}.main-navigation.has-branding .inside-navigation.grid-container{padding:0px;}}
+</style>
+<link rel="stylesheet" id="jetpack_css-css" href="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/jetpack.css" media="all">
+<script src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/jquery.min.js.download" id="jquery-core-js"></script>
+<script src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/jquery-migrate.min.js.download" id="jquery-migrate-js"></script>
+<script id="wsm-custom-front-js-js-extra">
+var wsm_ajax = "https:\/\/mortenknudsen.net\/wp-admin\/admin-ajax.php";
+</script>
+<script src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/custom_front_js.js.download" id="wsm-custom-front-js-js"></script>
+<link rel="https://api.w.org/" href="https://mortenknudsen.net/index.php?rest_route=/"><link rel="alternate" type="application/json" href="https://mortenknudsen.net/index.php?rest_route=/wp/v2/posts/525"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://mortenknudsen.net/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://mortenknudsen.net/wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 6.1.1">
+<link rel="shortlink" href="https://mortenknudsen.net/?p=525">
+<link rel="alternate" type="application/json+oembed" href="https://mortenknudsen.net/index.php?rest_route=%2Foembed%2F1.0%2Fembed&amp;url=https%3A%2F%2Fmortenknudsen.net%2F%3Fp%3D525">
+<link rel="alternate" type="text/xml+oembed" href="https://mortenknudsen.net/index.php?rest_route=%2Foembed%2F1.0%2Fembed&amp;url=https%3A%2F%2Fmortenknudsen.net%2F%3Fp%3D525&amp;format=xml">
+<!-- Wordpress Stats Manager -->
+    <script type="text/javascript">
+          var _wsm = _wsm || [];
+           _wsm.push(['trackPageView']);
+           _wsm.push(['enableLinkTracking']);
+           _wsm.push(['enableHeartBeatTimer']);
+          (function() {
+            var u="https://mortenknudsen.net/wp-content/plugins/wordpress-stats-manager-pro/";
+            _wsm.push(['setUrlReferrer', "https://t.co/"]);
+            _wsm.push(['setTrackerUrl',"https://mortenknudsen.net/?wmcAction=wmcTrack"]);
+            _wsm.push(['setSiteId', "1"]);
+            _wsm.push(['setPageId', "525"]);
+            _wsm.push(['setWpUserId', "0"]);           
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js/wsm_new.js?v=1.1'; s.parentNode.insertBefore(g,s);
+			
+          })();
+    </script>
+    <!-- End Wordpress Stats Manager Code -->	<style>img#wpstats{display:none}</style>
+		<link rel="pingback" href="https://mortenknudsen.net/xmlrpc.php">
+		<style id="wp-custom-css">
+			/* GeneratePress Site CSS */ .inside-article,
+.sidebar .widget,
+.comments-area {
+	border-right: 2px solid rgba(0, 0, 0, 0.07);
+	border-bottom: 2px solid rgba(0, 0, 0, 0.07);
+	box-shadow: 0 0 10px rgba(232, 234, 237, 0.5);
+}
+
+/* Featured widget */
+.sidebar .widget:first-child,
+.sidebar .widget:first-child .widget-title{
+	background-color: #83b0de;
+	color: #fff;
+}
+.sidebar .widget:first-child a,
+.sidebar .widget:first-child a:hover {
+	color: #fff;
+}
+
+.separate-containers .page-header {
+	background: transparent;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.page-header h1 {
+	font-size: 1.5em;
+}
+
+.button, .wp-block-button .wp-block-button__link {
+	padding: 15px 25px;
+}
+
+@media (max-width: 768px) {
+	.post-image img {
+		max-width: 100%;
+	}
+} /* End GeneratePress Site CSS */		</style>
+		<script charset="utf-8" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/horizon_timeline.5b32f06df3f1186af2ebf11024b09726.js.download"></script></head>
+
+<body class="post-template-default single single-post postid-525 single-format-standard wp-embed-responsive post-image-above-header post-image-aligned-center sticky-menu-no-transition sticky-enabled both-sticky-menu mobile-header mobile-header-logo right-sidebar nav-below-header separate-containers nav-search-enabled header-aligned-left dropdown-hover featured-image-active using-mouse" itemtype="https://schema.org/Blog" itemscope="">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-dark-grayscale"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0 0.49803921568627"></fefuncr><fefuncg type="table" tableValues="0 0.49803921568627"></fefuncg><fefuncb type="table" tableValues="0 0.49803921568627"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-grayscale"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0 1"></fefuncr><fefuncg type="table" tableValues="0 1"></fefuncg><fefuncb type="table" tableValues="0 1"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-purple-yellow"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0.54901960784314 0.98823529411765"></fefuncr><fefuncg type="table" tableValues="0 1"></fefuncg><fefuncb type="table" tableValues="0.71764705882353 0.25490196078431"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-blue-red"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0 1"></fefuncr><fefuncg type="table" tableValues="0 0.27843137254902"></fefuncg><fefuncb type="table" tableValues="0.5921568627451 0.27843137254902"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-midnight"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0 0"></fefuncr><fefuncg type="table" tableValues="0 0.64705882352941"></fefuncg><fefuncb type="table" tableValues="0 1"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-magenta-yellow"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0.78039215686275 1"></fefuncr><fefuncg type="table" tableValues="0 0.94901960784314"></fefuncg><fefuncb type="table" tableValues="0.35294117647059 0.47058823529412"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-purple-green"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0.65098039215686 0.40392156862745"></fefuncr><fefuncg type="table" tableValues="0 1"></fefuncg><fefuncb type="table" tableValues="0.44705882352941 0.4"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-blue-orange"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0.098039215686275 1"></fefuncr><fefuncg type="table" tableValues="0 0.66274509803922"></fefuncg><fefuncb type="table" tableValues="0.84705882352941 0.41960784313725"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><a class="screen-reader-text skip-link" href="https://mortenknudsen.net/?p=525#content" title="Skip to content">Skip to content</a>		<nav id="mobile-header" itemtype="https://schema.org/SiteNavigationElement" itemscope="" class="main-navigation mobile-header-navigation has-branding has-menu-bar-items">
+			<div class="inside-navigation grid-container grid-parent">
+				<form method="get" class="search-form navigation-search" action="https://mortenknudsen.net/">
+					<input type="search" class="search-field" value="" name="s" title="Search">
+				</form><div class="site-logo mobile-header-logo">
+						<a href="https://mortenknudsen.net/" title="Blog by Morten Knudsen about Microsoft Security, Azure, M365 &amp; Automation" rel="home">
+							<img src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/53A1873_fritlagt_udenskygge.png" alt="Blog by Morten Knudsen about Microsoft Security, Azure, M365 &amp; Automation" class="is-logo-image" width="1920" height="1280">
+						</a>
+					</div>					<button class="menu-toggle" aria-controls="mobile-menu" aria-expanded="false">
+						<span class="gp-icon icon-menu-bars"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 96c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24z"></path></svg><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z"></path></svg></span><span class="mobile-menu">Menu</span>					</button>
+					<div id="mobile-menu" class="main-nav"><ul id="menu-primary" class=" menu sf-menu"><li id="menu-item-57" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-57"><a href="https://mortenknudsen.net/">Home</a></li>
+<li id="menu-item-342" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-342"><a href="https://mortenknudsen.net/?page_id=12">Blog Posts</a></li>
+<li id="menu-item-119" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-119"><a href="https://mortenknudsen.net/?page_id=112">Scripts &amp; Slide decks</a></li>
+<li id="menu-item-308" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-308"><a href="https://mortenknudsen.net/?page_id=202">Meeting Microsoft product teams</a></li>
+<li id="menu-item-58" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-58"><a href="https://mortenknudsen.net/?page_id=49">About | Morten Knudsen<span role="presentation" class="dropdown-menu-toggle"><span class="gp-icon icon-arrow"><svg viewBox="0 0 330 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M305.913 197.085c0 2.266-1.133 4.815-2.833 6.514L171.087 335.593c-1.7 1.7-4.249 2.832-6.515 2.832s-4.815-1.133-6.515-2.832L26.064 203.599c-1.7-1.7-2.832-4.248-2.832-6.514s1.132-4.816 2.832-6.515l14.162-14.163c1.7-1.699 3.966-2.832 6.515-2.832 2.266 0 4.815 1.133 6.515 2.832l111.316 111.317 111.316-111.317c1.7-1.699 4.249-2.832 6.515-2.832s4.815 1.133 6.515 2.832l14.162 14.163c1.7 1.7 2.833 4.249 2.833 6.515z"></path></svg></span></span></a>
+<ul class="sub-menu">
+	<li id="menu-item-120" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-120"><a href="https://mortenknudsen.net/?page_id=108">Disclaimer</a></li>
+</ul>
+</li>
+<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="https://mortenknudsen.net/?page_id=55">Contact</a></li>
+</ul></div><div class="menu-bar-items"><span class="menu-bar-item search-item"><a aria-label="Open Search Bar" href="https://mortenknudsen.net/?p=525#"><span class="gp-icon icon-search"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path fill-rule="evenodd" clip-rule="evenodd" d="M208 48c-88.366 0-160 71.634-160 160s71.634 160 160 160 160-71.634 160-160S296.366 48 208 48zM0 208C0 93.125 93.125 0 208 0s208 93.125 208 208c0 48.741-16.765 93.566-44.843 129.024l133.826 134.018c9.366 9.379 9.355 24.575-.025 33.941-9.379 9.366-24.575 9.355-33.941-.025L337.238 370.987C301.747 399.167 256.839 416 208 416 93.125 416 0 322.875 0 208z"></path></svg><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z"></path></svg></span></a></span></div>			</div><!-- .inside-navigation -->
+		</nav><!-- #site-navigation -->
+				<nav class="auto-hide-sticky has-branding main-navigation nav-align-right has-menu-bar-items sub-menu-right stuckElement" id="site-navigation" aria-label="Primary" itemtype="https://schema.org/SiteNavigationElement" itemscope="" style="">
+			<div class="inside-navigation grid-container">
+				<div class="navigation-branding"><p class="main-title" itemprop="headline">
+					<a href="https://mortenknudsen.net/" rel="home">
+						Blog by Morten Knudsen about Microsoft Security, Azure, M365 &amp; Automation
+					</a>
+				</p></div><form method="get" class="search-form navigation-search" action="https://mortenknudsen.net/">
+					<input type="search" class="search-field" value="" name="s" title="Search">
+				</form>				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+					<span class="gp-icon icon-menu-bars"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 96c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24z"></path></svg><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z"></path></svg></span><span class="mobile-menu">Menu</span>				</button>
+				<div id="primary-menu" class="main-nav"><ul id="menu-primary-1" class=" menu sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-57"><a href="https://mortenknudsen.net/">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-342"><a href="https://mortenknudsen.net/?page_id=12">Blog Posts</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-119"><a href="https://mortenknudsen.net/?page_id=112">Scripts &amp; Slide decks</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-308"><a href="https://mortenknudsen.net/?page_id=202">Meeting Microsoft product teams</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-58"><a href="https://mortenknudsen.net/?page_id=49">About | Morten Knudsen<span role="presentation" class="dropdown-menu-toggle"><span class="gp-icon icon-arrow"><svg viewBox="0 0 330 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M305.913 197.085c0 2.266-1.133 4.815-2.833 6.514L171.087 335.593c-1.7 1.7-4.249 2.832-6.515 2.832s-4.815-1.133-6.515-2.832L26.064 203.599c-1.7-1.7-2.832-4.248-2.832-6.514s1.132-4.816 2.832-6.515l14.162-14.163c1.7-1.699 3.966-2.832 6.515-2.832 2.266 0 4.815 1.133 6.515 2.832l111.316 111.317 111.316-111.317c1.7-1.699 4.249-2.832 6.515-2.832s4.815 1.133 6.515 2.832l14.162 14.163c1.7 1.7 2.833 4.249 2.833 6.515z"></path></svg></span></span></a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-120"><a href="https://mortenknudsen.net/?page_id=108">Disclaimer</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="https://mortenknudsen.net/?page_id=55">Contact</a></li>
+</ul></div><div class="menu-bar-items"><span class="menu-bar-item search-item"><a aria-label="Open Search Bar" href="https://mortenknudsen.net/?p=525#"><span class="gp-icon icon-search"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path fill-rule="evenodd" clip-rule="evenodd" d="M208 48c-88.366 0-160 71.634-160 160s71.634 160 160 160 160-71.634 160-160S296.366 48 208 48zM0 208C0 93.125 93.125 0 208 0s208 93.125 208 208c0 48.741-16.765 93.566-44.843 129.024l133.826 134.018c9.366 9.379 9.355 24.575-.025 33.941-9.379 9.366-24.575 9.355-33.941-.025L337.238 370.987C301.747 399.167 256.839 416 208 416 93.125 416 0 322.875 0 208z"></path></svg><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z"></path></svg></span></a></span></div>			</div>
+		</nav>
+		
+	<div class="site grid-container container hfeed" id="page">
+				<div class="site-content" id="content">
+			
+	<div class="content-area" id="primary">
+		<main class="site-main" id="main">
+			
+<article id="post-525" class="post-525 post type-post status-publish format-standard has-post-thumbnail hentry category-azure category-sentinel tag-alert-rules tag-create tag-manage tag-management tag-remove tag-sentinel tag-update" itemtype="https://schema.org/CreativeWork" itemscope="">
+	<div class="inside-article">
+		<div class="featured-image  page-header-image-single ">
+				<img width="799" height="421" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/UpdateAlertRule-3.jpg" class="attachment-full size-full" alt="" decoding="async" itemprop="image" srcset="https://mortenknudsen.net/wp-content/uploads/2023/01/UpdateAlertRule-3.jpg 799w, https://mortenknudsen.net/wp-content/uploads/2023/01/UpdateAlertRule-3-300x158.jpg 300w, https://mortenknudsen.net/wp-content/uploads/2023/01/UpdateAlertRule-3-768x405.jpg 768w" sizes="(max-width: 799px) 100vw, 799px">
+			</div>			<header class="entry-header" aria-label="Content">
+				<h1 class="entry-title" itemprop="headline">Sentinel Alert Rules Management with Add / Update / Remove &amp; Alert Rule Action automation</h1>		<div class="entry-meta">
+			<span class="posted-on"><time class="updated" datetime="2023-01-09T13:46:23+01:00" itemprop="dateModified">09/01/2023</time><time class="entry-date published" datetime="2023-01-09T01:15:46+01:00" itemprop="datePublished">09/01/2023</time></span> <span class="byline">by <span class="author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope=""><a class="url fn n" href="https://mortenknudsen.net/?author=1" title="View all posts by Morten Knudsen" rel="author" itemprop="url"><span class="author-name" itemprop="name">Morten Knudsen</span></a></span></span> 		</div>
+					</header>
+			
+		<div class="entry-content" itemprop="text">
+			
+<p>Do you want to automate alert rules including <strong>creating new alert rules</strong> and <strong>update existing</strong> – with <strong>checks every x hours</strong> so your environment is <strong>continuously updated</strong> to <strong>help</strong> <strong>detect new threats</strong>? </p>
+
+
+
+<p>Do you want to <strong>keep your Sentinel Alert Rules updated</strong> with<strong> latest Alert Rules templates from Microsoft </strong>so <strong>queries</strong>, <strong>entity-support gets updated</strong> and new features come into play?</p>
+
+
+
+<p>Do you want to <strong>support new rule types</strong> as they get released ?</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="313" height="428" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/methods.jpg" alt="" class="wp-image-535" srcset="https://mortenknudsen.net/wp-content/uploads/2023/01/methods.jpg 313w, https://mortenknudsen.net/wp-content/uploads/2023/01/methods-219x300.jpg 219w" sizes="(max-width: 313px) 100vw, 313px"></figure>
+
+
+
+<p></p>
+
+
+
+<p>Maybe you want to <strong>have a default alert rule action</strong> like ‘<strong>Send mail</strong>‘ linked to your alert rules in case you want to use a logic app to distribute the emails depending on who should receive the alert.</p>
+
+
+
+<p>If yes, keep reading and get inspired with the possibilities and a few challenges <img draggable="false" role="img" class="emoji" alt="🙂" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/1f642.svg"></p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" loading="lazy" width="1024" height="589" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/AlertRulesTemplate-1024x589.jpg" alt="" class="wp-image-531" srcset="https://mortenknudsen.net/wp-content/uploads/2023/01/AlertRulesTemplate-1024x589.jpg 1024w, https://mortenknudsen.net/wp-content/uploads/2023/01/AlertRulesTemplate-300x172.jpg 300w, https://mortenknudsen.net/wp-content/uploads/2023/01/AlertRulesTemplate-768x441.jpg 768w, https://mortenknudsen.net/wp-content/uploads/2023/01/AlertRulesTemplate-1536x883.jpg 1536w, https://mortenknudsen.net/wp-content/uploads/2023/01/AlertRulesTemplate.jpg 1698w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<p></p>
+
+
+
+<h2>Solution objective</h2>
+
+
+
+<p>As mentioned, it is crucial to stay updated with Sentinel Alert Rules, in order to detect new threats or critical vulnerabilities like Log4J. I recommend to check for new alert rules every 4-6 hours, so Sentinel is maximum 4-6 hours behind detecting new threats. </p>
+
+
+
+<p>Microsoft, 3rd party vendors or community will release <strong>new</strong> or <strong>updated alert rules</strong> as soon as a threat can be detected similar when support for detecting these threats were released very fast: </p>
+
+
+
+<ul>
+<li>Vulnerable Machines related to log4j CVE-2021-44228</li>
+
+
+
+<li>AV detections related to Ukraine threats</li>
+
+
+
+<li>KNOTWEED AV Detection</li>
+
+
+
+<li>Dev-0270 WMIC Discovery</li>
+
+
+
+<li>HAFNIUM New UM Service Child Process</li>
+</ul>
+
+
+
+<p>By implementing an automation for alert rules, you will be continuously having an updated SIEM environment being able to detect new use-cases.</p>
+
+
+
+<h2>Ways you can do this ?</h2>
+
+
+
+<p>Microsoft are providing multiple ways to achieve this including:</p>
+
+
+
+<ul>
+<li><strong>Powershell modules</strong> and <strong>REST api</strong>, which can be accessed though a <strong>Powershell script</strong> running as part of your <strong>automation</strong></li>
+
+
+
+<li>Deploying <strong>custom content</strong> through your <strong>Github</strong> or <strong>Azure DevOps repository</strong>. This solution is currently in public preview and I urge you to try it out (<a href="https://learn.microsoft.com/en-us/azure/sentinel/ci-cd?tabs=github" target="_blank" rel="noreferrer noopener">link</a>)</li>
+</ul>
+
+
+
+<p>This blog will focus on the <strong>script-method</strong>, as it can be used by companies of all sizes without deep knowledge of DevOps. This is a great ‘accelerator’ to get up and running – and stay running – in a fast way.</p>
+
+
+
+<p>I will add an article on deploying custom content through Github and Azure DevOps later.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="799" height="421" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/UpdateAlertRule-3.jpg" alt="" class="wp-image-542" srcset="https://mortenknudsen.net/wp-content/uploads/2023/01/UpdateAlertRule-3.jpg 799w, https://mortenknudsen.net/wp-content/uploads/2023/01/UpdateAlertRule-3-300x158.jpg 300w, https://mortenknudsen.net/wp-content/uploads/2023/01/UpdateAlertRule-3-768x405.jpg 768w" sizes="(max-width: 799px) 100vw, 799px"></figure>
+
+
+
+<p></p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" loading="lazy" width="1024" height="388" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/CreateAlertRule-1-1024x388.jpg" alt="" class="wp-image-544" srcset="https://mortenknudsen.net/wp-content/uploads/2023/01/CreateAlertRule-1-1024x388.jpg 1024w, https://mortenknudsen.net/wp-content/uploads/2023/01/CreateAlertRule-1-300x114.jpg 300w, https://mortenknudsen.net/wp-content/uploads/2023/01/CreateAlertRule-1-768x291.jpg 768w, https://mortenknudsen.net/wp-content/uploads/2023/01/CreateAlertRule-1.jpg 1498w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<p></p>
+
+
+
+<h2>Script overview</h2>
+
+
+
+<ul>
+<li>Script will use templates, part of Sentinel (see list below). Currently there is no support for content hub.</li>
+
+
+
+<li>Script should run every x hours to check for changes.</li>
+
+
+
+<li>Script will check if alert rules templates have changed by Microsoft or other 3rd parties, part of the defined scope.
+<ul>
+<li>Add/create
+<ul>
+<li>In case a new alert rule has been released, it will be created.</li>
+</ul>
+</li>
+
+
+
+<li>Update
+<ul>
+<li>In case an existing alert rule has been updated, it will be updated (overwritten using 100% settings from alert rule template)</li>
+</ul>
+</li>
+
+
+
+<li>Remove
+<ul>
+<li>In case of scope changes (excluded), script can automatically remove any orphaned alert rules that was used prior, where the connector now should be excluded. This parameter is configurable.</li>
+
+
+
+<li>In case of duplets based on displayname, script can remove these. This parameter is configurable.</li>
+</ul>
+</li>
+</ul>
+</li>
+
+
+
+<li>Script can automatically add a default action to each alert rules, for example a logic app that will send an email. This is configurable using relevant parameters.</li>
+
+
+
+<li>Script will create issue-logfiles in case some alert rules cannot be created.
+<ul>
+<li>This is typically caused by column, tables or normalization which is missing.</li>
+
+
+
+<li>You can then fix these issues. Next time it will retry any pending alert rules.</li>
+</ul>
+</li>
+</ul>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" loading="lazy" width="1024" height="134" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/error-create-1024x134.jpg" alt="" class="wp-image-532" srcset="https://mortenknudsen.net/wp-content/uploads/2023/01/error-create-1024x134.jpg 1024w, https://mortenknudsen.net/wp-content/uploads/2023/01/error-create-300x39.jpg 300w, https://mortenknudsen.net/wp-content/uploads/2023/01/error-create-768x101.jpg 768w, https://mortenknudsen.net/wp-content/uploads/2023/01/error-create.jpg 1366w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<p></p>
+
+
+
+<p>To get started, please look in the section ‘How to Get Started’.</p>
+
+
+
+<p>You can download the <a href="https://github.com/KnudsenMorten/Sentinel_Alert_Rule_Management" target="_blank" rel="noreferrer noopener">script from my Github</a></p>
+
+
+
+<p></p>
+
+
+
+<pre class="wp-block-code has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background has-background"><code><strong>IMPORTANT REMARKS</strong>
+I have taken the assumption, that most of us wants a standard configuration, which potentially can be updated with a high frequency as new versions gets released.
+
+Therefore if you have made customizations to your alert rules, they will be overwritten by the latest configuration from the templates, when the update runs.
+
+If an alert rule has been disabled, it will remain disabled even though alert rule will be updated.
+
+Solution can easily be enhanced in various ways adding more processes including test &amp; approval, exporting alert rule before updating, include-checks, etc. I might be adding these later.</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2>Filtering / Scope definition Challenge</h2>
+
+
+
+<p>To my knowledge, it is currently not possible to retrieve a complete list of the <strong>connected connectors</strong> using REST API and Powershell, so I am using a workaround outlined below.</p>
+
+
+
+<p>Of course, Microsoft will fix this, adding more features to the API every month. Latest API is from last month (<strong>2022-12-01-preview</strong>). </p>
+
+
+
+<p>I will keep an eye on this <a href="https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/data-connectors/list?tabs=HTTP" target="_blank" rel="noreferrer noopener">link</a> and update script accordingly.</p>
+
+
+
+<p>Goal is to retrieve the list shown below with the 17 connected connectors.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="554" height="591" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/connected_connectors-1.jpg" alt="" class="wp-image-528" srcset="https://mortenknudsen.net/wp-content/uploads/2023/01/connected_connectors-1.jpg 554w, https://mortenknudsen.net/wp-content/uploads/2023/01/connected_connectors-1-281x300.jpg 281w" sizes="(max-width: 554px) 100vw, 554px"></figure>
+
+
+
+<p></p>
+
+
+
+<pre class="wp-block-code"><code><strong># Method 1 (PS) - Get-AzSentinelDataConnector
+</strong>Get-AzSentinelDataConnector -ResourceGroupName $global:MainLogAnalyticsWorkspaceResourceGroup -workspaceName $global:MainLogAnalyticsWorkspaceName
+
+<strong>In my case, it returns 6 connectors - but I have 17 connected connectors.</strong></code></pre>
+
+
+
+<pre class="wp-block-code"><code><strong># Method 2 (REST API preview 2022-12-01-preview)</strong>
+    $baseUri = "/subscriptions/$($global:MainLogAnalyticsWorkspaceSubId)/resourceGroups/$($global:MainLogAnalyticsWorkspaceResourceGroup)/providers/Microsoft.OperationalInsights/workspaces/$($global:MainLogAnalyticsWorkspaceName)"
+    $connectedDataConnectorsUri = "$baseUri/providers/Microsoft.SecurityInsights/dataConnectors/?api-version=2022-12-01-preview"
+
+    $ConnectorsInUse = (Invoke-AzRestMethod -Path $connectedDataConnectorsUri -Method GET).Content | ConvertFrom-Json			
+    $ConnectorsInUseList = $ConnectorsInUse.value
+
+<strong>In my environment, it returns 11 connectors - but I have 17 connected connectors.</strong></code></pre>
+
+
+
+<p></p>
+
+
+
+<h2>Temporary Workaround to define connectors in scope</h2>
+
+
+
+<p></p>
+
+
+
+<p>Until supported by API, I have chosen a fairly simple approach, where I define a list of <strong>connectors, which are excluded</strong>. </p>
+
+
+
+<p>Someone might think, why are you not using include. The reason for that is, that I have seen connector-renames.</p>
+
+
+
+<p>As part of the variables, you define a list of data-connectors, which are NOT part of the scope of the <strong>required data connectors</strong>.</p>
+
+
+
+<p>I have made the assumption, that I am only excluding alert rules, which are having a explicit requirement for a data connector. I have decided to enable the alert rules, which are having more than 1 data connector, where one of them are on the exclude list. Many alert rules are doing lookups in multiple tables, including 1 which is excluded. These are included.</p>
+
+
+
+<p>Example below where script will exclude all alert rules being dependent on one of the below data connectors.</p>
+
+
+
+<pre class="wp-block-code"><code>    $global:Sentinel_DataConnectors_ExcludeAlertRules               = @(
+                                                                        "AIVectraStream"
+                                                                        "AWS"
+                                                                        "AWSS3"
+                                                                        "Barracuda"
+                                                                        "CEF"
+                                                                        "CheckPoint"
+                                                                        "CiscoASA"
+                                                                        "CiscoUmbrellaDataConnector"
+                                                                        "Corelight"
+                                                                        "Dynamics365"
+                                                                        "F5"
+                                                                        "Fortinet"
+                                                                        "GCPDNSDataConnector"
+                                                                        "InfobloxNIOS"
+                                                                        "IoT"
+                                                                        "MicrosoftSysmonForLinux"
+                                                                        "NXLogDnsLogs"
+                                                                        "PaloAltoNetworks"
+                                                                        "ProofpointPOD"
+                                                                        "PulseConnectSecure"
+                                                                        "QualysVulnerabilityManagement"
+                                                                        "SquidProxy"
+                                                                        "Syslog"
+                                                                        "ThreatIntelligence"
+                                                                        "ThreatIntelligenceTaxii"
+                                                                        "TrendMicro"
+                                                                        "WAF"
+                                                                        "Zscaler"                                                                        
+                                                                        )
+</code></pre>
+
+
+
+<p>The complete list of standard connectors per Jan 9, 2023.</p>
+
+
+
+<pre class="wp-block-code"><code>AIVectraStream
+AWS
+AWSS3
+AzureActiveDirectory
+AzureActiveDirectoryIdentityProtection
+AzureActivity
+AzureAdvancedThreatProtection
+AzureFirewall
+AzureKeyVault
+AzureMonitor(IIS)
+AzureMonitor(VMInsights)
+AzureMonitor(WireData)
+AzureNSG
+AzureSecurityCenter
+Barracuda
+BehaviorAnalytics
+CEF
+CheckPoint
+CiscoASA
+CiscoUmbrellaDataConnector
+Corelight
+DNS
+Dynamics365
+F5
+Fortinet
+GCPDNSDataConnector
+InfobloxNIOS
+IoT
+MicrosoftCloudAppSecurity
+MicrosoftDefenderAdvancedThreatProtection
+MicrosoftSysmonForLinux
+MicrosoftThreatProtection
+NXLogDnsLogs
+Office365
+OfficeATP
+OfficeIRM
+PaloAltoNetworks
+ProofpointPOD
+PulseConnectSecure
+QualysVulnerabilityManagement
+SecurityEvents
+SquidProxy
+Syslog
+ThreatIntelligence
+ThreatIntelligenceTaxii
+TrendMicro
+WAF
+WindowsFirewall
+WindowsForwardedEvents
+WindowsSecurityEvents
+Zscaler</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2>Alert Rules with no requirement for a data connector</h2>
+
+
+
+<p>Right now, there are <strong>54 alert rules</strong> in the templates with<strong> no requirement for a data connector</strong>. Personally I think that some of them are mistakes, which I have escalated to the product-team.</p>
+
+
+
+<p>I have made support to also add these alert rules, even though some of them might be of the grid of what you need.</p>
+
+
+
+<pre class="wp-block-code"><code>Suspicious link sharing pattern
+External User Access Enabled
+User login from different countries within 3 hours (Uses Authentication Normalization)
+SUNBURST and SUPERNOVA backdoor hashes (Normalized File Events)
+Base64 encoded Windows process command-lines (Normalized Process Events)
+Unusual Anomaly
+Sign-ins from IPs that attempt sign-ins to disabled accounts (Uses Authentication Normalization)
+Potential re-named sdelete usage (ASIM Version)
+Azure DevOps PAT used with Browser.
+Vulnerable Machines related to OMIGOD CVE-2021-38647
+Exchange Server Suspicious File Downloads.
+GitHub Activites from a New Country
+Zoom E2E Encryption Disabled
+HAFNIUM Suspicious UM Service Error
+AppServices AV Scan Failure
+Sdelete deployed via GPO and run recursively (ASIM Version)
+Trust Monitor Event
+Azure DevOps Build Variable Modified by New User.
+Dev-0228 File Path Hashes November 2021 (ASIM Version)
+NOBELIUM - suspicious rundll32.exe execution of vbscript (Normalized Process Events)
+AppServices AV Scan with Infected Files
+HAFNIUM Suspicious File Downloads.
+Azure DevOps Retention Reduced
+Potential Password Spray Attack (Uses Authentication Normalization)
+NRT GitHub Two Factor Auth Disable
+NRT Azure DevOps Audit Stream Disabled
+New PA, PCA, or PCAS added to Azure DevOps
+Malware in the recycle bin (Normalized Process Events)
+Azure DevOps Service Connection Addition/Abuse - Historic allow list
+Azure DevOps Variable Secret Not Secured
+Azure DevOps Service Connection Abuse
+Probable AdFind Recon Tool Usage (Normalized Process Events)
+Advanced Multistage Attack Detection
+SUNBURST suspicious SolarWinds child processes (Normalized Process Events)
+Azure DevOps Personal Access Token (PAT) misuse
+Azure DevOps Pipeline modified by a new user.
+Azure DevOps Audit Stream Disabled
+User joining Zoom meeting from suspicious timezone
+Potential Fodhelper UAC Bypass (ASIM Version)
+Azure DevOps Agent Pool Created Then Deleted
+Brute force attack against user credentials (Uses Authentication Normalization)
+New Agent Added to Pool by New User or Added to a New OS Type.
+Vulnerable Machines related to log4j CVE-2021-44228
+External Upstream Source Added to Azure DevOps Feed
+Azure DevOps Pull Request Policy Bypassing - Historic allow list
+Azure DevOps New Extension Added
+Azure DevOps Administrator Group Monitoring
+Users searching for VIP user activity
+OMI Vulnerability Exploitation
+Missing Domain Controller Heartbeat
+GitHub Two Factor Auth Disable
+Azure DevOps Pipeline Created and Deleted on the Same Day
+Wazuh - Large Number of Web errors from an IP
+GitHub Security Vulnerability in Repository</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2>How can I build a list of possible data connectors to make my exclude list ?</h2>
+
+
+
+<p>In case you want to adopt the script and want to keep the exclude-list up-to-date, you can run the below REST API command to list all possible data connectors. Then you can adjust you exclude list.</p>
+
+
+
+<pre class="wp-block-code"><code>$baseUri = "/subscriptions/$($global:MainLogAnalyticsWorkspaceSubId)/resourceGroups/$($global:MainLogAnalyticsWorkspaceResourceGroup)/providers/Microsoft.OperationalInsights/workspaces/$($global:MainLogAnalyticsWorkspaceName)"
+$Uri = "$baseUri/providers/Microsoft.SecurityInsights/alertRuleTemplates/?api-version=2022-12-01-preview"
+
+$AllAlertRuleFromTemplatesApi = (Invoke-AzRestMethod -Path $Uri -Method GET).Content | ConvertFrom-Json
+$AllAlertRuleFromTemplates = $AllAlertRuleFromTemplatesApi.value
+$CompleteConnectorList = $AllAlertRuleFromTemplates.properties.RequiredDataConnectors.ConnectorId | Sort-Object -Unique
+
+Write-Output "Complete list of Data Connectors defined in alert rules templates"
+$CompleteConnectorList</code></pre>
+
+
+
+<p></p>
+
+
+
+<h2>How can I get started ?</h2>
+
+
+
+<p>You can download the <a href="https://github.com/KnudsenMorten/Sentinel_Alert_Rule_Management" target="_blank" rel="noreferrer noopener">script from my Github</a></p>
+
+
+
+<p>If you want to get familiar with the script, I propose that you use your test-environment, where you can run the script to test its functionality.</p>
+
+
+
+<p>Consider to setup a test-environment with a basic Sentinel environment and some basic connectors.</p>
+
+
+
+<h5><strong>Connectivity to Azure</strong></h5>
+
+
+
+<p>For demo purpose, I have just added a simple <strong>Connect-AzAccount</strong> in the script.</p>
+
+
+
+<p>Remember to change this into using for example connection using certificate and Azure App registration – or alternative approach. I will not be covering this topic, but there are many great samples of this on the internet.</p>
+
+
+
+<pre class="wp-block-code"><code>Connect-AzAccount -CertificateThumbprint $global:HighPriv_Modern_CertificateThumbprint_Azure -TenantId $global:AzureTenantId -Application $global:HighPriv_Modern_ApplicationID_Azure
+</code></pre>
+
+
+
+<h5><strong>Variables</strong></h5>
+
+
+
+<p>Before running the script, please adjust It is rather simple to get the script configured, as you just have to define the below variables:</p>
+
+
+
+<pre class="wp-block-code"><code>###############################################################
+# LogAnalytics Workspaces
+###############################################################
+
+$global:MainLogAnalyticsWorkspaceName  = "log-srvnetworkcloud-p"
+$global:MainLogAnalyticsWorkspaceSubId   = "xxxxxxxxxxc6-43fb-94d8-bf1701b862c3"
+$global:MainLogAnalyticsWorkspaceResourceGroup  = "rg-logworkspaces"
+</code></pre>
+
+
+
+<pre class="wp-block-code"><code>###############################################################
+# Sentinel
+###############################################################
+
+$global:Sentinel_DataConnectors_ExcludeAlertRules               = @(
+                                                                    "AIVectraStream"
+                                                                    "AWS"
+                                                                    "AWSS3"
+                                                                    "Barracuda"
+                                                                    "CEF"
+                                                                    "CheckPoint"
+                                                                    "CiscoASA"
+                                                                    "CiscoUmbrellaDataConnector"
+                                                                    "Corelight"
+                                                                    "Dynamics365"
+                                                                    "F5"
+                                                                    "Fortinet"
+                                                                    "GCPDNSDataConnector"
+                                                                    "InfobloxNIOS"
+                                                                    "IoT"
+                                                                    "MicrosoftSysmonForLinux"
+                                                                    "NXLogDnsLogs"
+                                                                    "PaloAltoNetworks"
+                                                                    "ProofpointPOD"
+                                                                    "PulseConnectSecure"
+                                                                    "QualysVulnerabilityManagement"
+                                                                    "SquidProxy"
+                                                                    "Syslog"
+                                                                    "ThreatIntelligence"
+                                                                    "ThreatIntelligenceTaxii"
+                                                                    "TrendMicro"
+                                                                    "WAF"
+                                                                    "Zscaler"                                                                        
+                                                                    )
+
+# Sentinel Alert Management
+$global:Sentinel_DeleteExcludedAlertRulesFromTemplateIfFound    = $false
+$global:Sentinel_DeleteDupletAlertsRulesIfFound = $false
+$global:Sentinel_CreateUpdateAlertRulesWithNoDataConnectorReq  = $true
+
+# Sentinel Alert Rule Action (default)
+$global:SentinelAlertingEnableLogicAppAction = $true
+$global:SentinelAlertingForceSetExistingRules  = $true
+
+$global:SentinelAlertingLogicAppActionName = "SendEmail"
+$global:SentinelAlertingLogicAppActionRG = "AzureRG3-Management-WestEurope"
+$global:SentinelAlertingLogicAppActionTriggerName  = "When_a_response_to_an_Azure_Sentinel_alert_is_triggered"
+
+# Sentinel Alert Rule management logging
+$global:Sentinel_Issues_List = "D:\SRIPTS\OUTPUT\SENTINEL_AlertRules_Issues_List.txt"
+$global:Sentinel_Issues_Detailed= "D:\SCRIPTS\OUTPUT\SENTINEL_AlertRules_Issues_Detailed.txt"
+
+</code></pre>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" loading="lazy" width="1024" height="388" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/CreateAlertRule2-1024x388.jpg" alt="" class="wp-image-545" srcset="https://mortenknudsen.net/wp-content/uploads/2023/01/CreateAlertRule2-1024x388.jpg 1024w, https://mortenknudsen.net/wp-content/uploads/2023/01/CreateAlertRule2-300x114.jpg 300w, https://mortenknudsen.net/wp-content/uploads/2023/01/CreateAlertRule2-768x291.jpg 768w, https://mortenknudsen.net/wp-content/uploads/2023/01/CreateAlertRule2.jpg 1498w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption class="wp-element-caption">Automatic update (overwrite) of existing alert rules when new version is released.</figcaption></figure>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="534" height="154" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/alert-rule-action.jpg" alt="" class="wp-image-534" srcset="https://mortenknudsen.net/wp-content/uploads/2023/01/alert-rule-action.jpg 534w, https://mortenknudsen.net/wp-content/uploads/2023/01/alert-rule-action-300x87.jpg 300w" sizes="(max-width: 534px) 100vw, 534px"><figcaption class="wp-element-caption">Automatic check if alert rule action has been set on the alert rule.</figcaption></figure>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="573" height="494" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/setting-alertrule.jpg" alt="" class="wp-image-569" srcset="https://mortenknudsen.net/wp-content/uploads/2023/01/setting-alertrule.jpg 573w, https://mortenknudsen.net/wp-content/uploads/2023/01/setting-alertrule-300x259.jpg 300w" sizes="(max-width: 573px) 100vw, 573px"></figure>
+		</div>
+
+				<footer class="entry-meta" aria-label="Entry meta">
+			<span class="cat-links"><span class="gp-icon icon-categories"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 112c0-26.51 21.49-48 48-48h110.014a48 48 0 0143.592 27.907l12.349 26.791A16 16 0 00228.486 128H464c26.51 0 48 21.49 48 48v224c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V112z"></path></svg></span><span class="screen-reader-text">Categories </span><a href="https://mortenknudsen.net/?cat=55" rel="category">Azure</a>, <a href="https://mortenknudsen.net/?cat=58" rel="category">Sentinel</a></span> <span class="tags-links"><span class="gp-icon icon-tags"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M20 39.5c-8.836 0-16 7.163-16 16v176c0 4.243 1.686 8.313 4.687 11.314l224 224c6.248 6.248 16.378 6.248 22.626 0l176-176c6.244-6.244 6.25-16.364.013-22.615l-223.5-224A15.999 15.999 0 00196.5 39.5H20zm56 96c0-13.255 10.745-24 24-24s24 10.745 24 24-10.745 24-24 24-24-10.745-24-24z"></path><path d="M259.515 43.015c4.686-4.687 12.284-4.687 16.97 0l228 228c4.686 4.686 4.686 12.284 0 16.97l-180 180c-4.686 4.687-12.284 4.687-16.97 0-4.686-4.686-4.686-12.284 0-16.97L479.029 279.5 259.515 59.985c-4.686-4.686-4.686-12.284 0-16.97z"></path></svg></span><span class="screen-reader-text">Tags </span><a href="https://mortenknudsen.net/?tag=alert-rules" rel="tag">Alert Rules</a>, <a href="https://mortenknudsen.net/?tag=create" rel="tag">Create</a>, <a href="https://mortenknudsen.net/?tag=manage" rel="tag">Manage</a>, <a href="https://mortenknudsen.net/?tag=management" rel="tag">Management</a>, <a href="https://mortenknudsen.net/?tag=remove" rel="tag">Remove</a>, <a href="https://mortenknudsen.net/?tag=sentinel" rel="tag">Sentinel</a>, <a href="https://mortenknudsen.net/?tag=update" rel="tag">Update</a></span> 		<nav id="nav-below" class="post-navigation" aria-label="Posts">
+			<div class="nav-previous"><span class="gp-icon icon-arrow-left"><svg viewBox="0 0 192 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M178.425 138.212c0 2.265-1.133 4.813-2.832 6.512L64.276 256.001l111.317 111.277c1.7 1.7 2.832 4.247 2.832 6.513 0 2.265-1.133 4.813-2.832 6.512L161.43 394.46c-1.7 1.7-4.249 2.832-6.514 2.832-2.266 0-4.816-1.133-6.515-2.832L16.407 262.514c-1.699-1.7-2.832-4.248-2.832-6.513 0-2.265 1.133-4.813 2.832-6.512l131.994-131.947c1.7-1.699 4.249-2.831 6.515-2.831 2.265 0 4.815 1.132 6.514 2.831l14.163 14.157c1.7 1.7 2.832 3.965 2.832 6.513z" fill-rule="nonzero"></path></svg></span><span class="prev"><a href="https://mortenknudsen.net/?p=450" rel="prev">Real example with 43% cost savings on Sentinel log-costs: How to exclude Syslog log-events from banned IPs using AbuseIPDB-service with integration to firewalls</a></span></div>		</nav>
+				</footer>
+			</div>
+</article>
+
+			<div class="comments-area">
+				<div id="comments">
+
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://mortenknudsen.net/?p=525#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://mortenknudsen.net/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate=""><p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" required=""></textarea></p><label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required="">
+<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required="">
+<label for="url" class="screen-reader-text">Website</label><input placeholder="Website" id="url" name="url" type="url" value="" size="30">
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="525" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="643e4e753b"></p><p style="display: none !important;"><label>Δ<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="1673340665774"><script>document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );</script></p></form>	</div><!-- #respond -->
+	
+</div><!-- #comments -->
+			</div>
+
+					</main>
+	</div>
+
+	<div class="widget-area sidebar is-right-sidebar" id="right-sidebar">
+	<div class="inside-right-sidebar">
+		<aside id="text-2" class="widget inner-padding widget_text"><h2 class="widget-title">About | Morten Knudsen</h2>			<div class="textwidget"><p><img decoding="async" loading="lazy" class="alignnone size-medium wp-image-124" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/53A1873_fritlagt_udenskygge-300x200.png" alt="" width="300" height="200" srcset="https://mortenknudsen.net/wp-content/uploads/2022/12/53A1873_fritlagt_udenskygge-300x200.png 300w, https://mortenknudsen.net/wp-content/uploads/2022/12/53A1873_fritlagt_udenskygge-1024x683.png 1024w, https://mortenknudsen.net/wp-content/uploads/2022/12/53A1873_fritlagt_udenskygge-768x512.png 768w, https://mortenknudsen.net/wp-content/uploads/2022/12/53A1873_fritlagt_udenskygge-1536x1024.png 1536w, https://mortenknudsen.net/wp-content/uploads/2022/12/53A1873_fritlagt_udenskygge.png 1920w" sizes="(max-width: 300px) 100vw, 300px"></p>
+<p>Cloud &amp; Security Architect</p>
+<p>Microsoft Sentinel Black Belt</p>
+<p>Microsoft Defender Black Belt</p>
+<p>Microsoft Sentinel Influencer</p>
+<p>Microsoft Defender for Cloud Influencer</p>
+<p>Microsoft Cloud Security Product Champion</p>
+<p>Azure Automation specialist</p>
+<p>Microsoft Certified: Cybersecurity Architect Expert</p>
+<p>Microsoft 365 Certified: Enterprise Administrator Expert</p>
+<p>Microsoft Certified: Azure Solutions Architect Expert</p>
+<p>Microsoft Certified: DevOps Engineer Expert</p>
+<p>Microsoft Certified Trainer</p>
+</div>
+		</aside><aside id="recent-posts-widget-with-thumbnails-1" class="widget inner-padding recent-posts-widget-with-thumbnails">
+<div id="rpwwt-recent-posts-widget-with-thumbnails-1" class="rpwwt-widget">
+<h2 class="widget-title">Recent Posts</h2>
+	<ul>
+		<li><a href="https://mortenknudsen.net/?p=450"><img width="50" height="50" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/2-step4-150x150.jpg" class="attachment-50x50 size-50x50 wp-post-image" alt="" decoding="async" loading="lazy"><span class="rpwwt-post-title">Real example with 43% cost savings on Sentinel log-costs: How to exclude Syslog log-events from banned IPs using AbuseIPDB-service with integration to firewalls</span></a></li>
+		<li><a href="https://mortenknudsen.net/?p=415"><img width="50" height="50" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/mdav_report-150x150.png" class="attachment-50x50 size-50x50 wp-post-image" alt="" decoding="async" loading="lazy"><span class="rpwwt-post-title">Microsoft Defender Antivirus Performance Analyzer – understand which files, file extensions, or processes that might be causing performance issues on endpoints during antivirus realtime protection scans</span></a></li>
+		<li><a href="https://mortenknudsen.net/?p=403"><img width="50" height="50" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/passwords-150x150.png" class="attachment-50x50 size-50x50 wp-post-image" alt="" decoding="async" loading="lazy"><span class="rpwwt-post-title">How to do a Password Audit of your Active Directory passwords using DSInternals?</span></a></li>
+		<li><a href="https://mortenknudsen.net/?p=344"><img width="50" height="50" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/Teaser-picture4-3-150x150.png" class="attachment-50x50 size-50x50 wp-post-image" alt="" decoding="async" loading="lazy"><span class="rpwwt-post-title">How to run custom scripts on thousands of servers within a few minutes using Azure Custom Scripts extension and multithreaded jobs – and have them re-run daily?</span></a></li>
+		<li><a href="https://mortenknudsen.net/?p=323"><img width="50" height="50" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/MdeTvm-150x150.jpg" class="attachment-50x50 size-50x50 wp-post-image" alt="" decoding="async" loading="lazy"><span class="rpwwt-post-title">How to migrate from Qualys and enable Microsoft Defender Vulnerability Management (MdeTvm) in Microsoft Defender for Cloud?</span></a></li>
+	</ul>
+</div><!-- .rpwwt-widget -->
+</aside><aside id="block-10" class="widget inner-padding widget_block">
+<figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
+<div class="twitter-timeline twitter-timeline-rendered" style="display: flex; width: 840px; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" style="position: absolute; visibility: hidden; width: 0px; height: 0px; display: block; flex-grow: 1;" title="Twitter Timeline" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/knudsenmortendk.html"></iframe></div><a class="twitter-timeline" data-width="840" data-height="1000" data-dnt="true" href="https://twitter.com/knudsenmortendk?ref_src=twsrc%5Etfw" data-twitter-extracted-i1673340665897913935="true">Tweets by knudsenmortendk</a><script async="" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/widgets.js.download" charset="utf-8"></script>
+</div></figure>
+</aside>	</div>
+</div>
+
+	</div>
+</div>
+
+
+<div class="site-footer footer-bar-active footer-bar-align-right">
+			<footer class="site-info" aria-label="Site" itemtype="https://schema.org/WPFooter" itemscope="">
+			<div class="inside-site-info grid-container">
+						<div class="footer-bar">
+			<aside id="nav_menu-1" class="widget inner-padding widget_nav_menu"><div class="menu-footer-bar-marketer-container"><ul id="menu-footer-bar-marketer" class="menu"><li id="menu-item-61" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-61"><a href="https://mortenknudsen.net/?p=525#">Privacy Policy</a></li>
+<li id="menu-item-63" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-63"><a href="https://mortenknudsen.net/?p=525#">Terms</a></li>
+<li id="menu-item-62" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62"><a href="https://mortenknudsen.net/?p=525#">Contact</a></li>
+</ul></div></aside>		</div>
+						<div class="copyright-bar">
+					<span class="copyright">© 2023 Blog by Morten Knudsen about Microsoft Security, Azure, M365 &amp; Automation</span> • Built with <a href="https://generatepress.com/" itemprop="url">GeneratePress</a>				</div>
+			</div>
+		</footer>
+		</div>
+
+<script type="text/javascript">
+        jQuery(function(){
+        var arrLiveStats=[];
+        var P_PREFIX="wsm";
+        jQuery(".if-js-closed").removeClass("if-js-closed").addClass("closed");
+                var wsmFnSiteLiveStats=function(){
+                           jQuery.ajax({
+                               type: "POST",
+                               url: wsm_ajaxObject.ajax_url,
+                               data: { action: 'liveSiteStats', requests: JSON.stringify(arrLiveStats), r: Math.random() }
+                           }).done(function( strResponse ) {
+                                if(strResponse!="No"){
+                                    arrResponse=JSON.parse(strResponse);
+                                    jQuery.each(arrResponse, function(key,value){
+                                    
+                                        $element= document.getElementById(key);
+                                        oldValue=parseInt($element.getAttribute("data-value").replace(/,/g, ""));
+                                        diff=parseInt(value.replace(/,/g, ""))-oldValue;
+                                        $class="";
+                                        
+                                        if(diff>=0){
+                                            diff="+"+diff;
+                                        }else{
+                                            $class="wmcRedBack";
+                                        }
+
+                                        $element.setAttribute("data-value",value);
+                                        $element.innerHTML=diff;
+                                        jQuery("#"+key).addClass($class).show().siblings(".wsmH2Number").text(value);
+                                        
+                                        if(key=="SiteUserOnline")
+                                        {
+                                            var onlineUserCnt = arrResponse.wsmSiteUserOnline;
+                                            if(jQuery("#wsmSiteUserOnline").length)
+                                            {
+                                                jQuery("#wsmSiteUserOnline").attr("data-value",onlineUserCnt);   jQuery("#wsmSiteUserOnline").next(".wsmH2Number").html("<a target=\"_blank\" href=\"admin.php?page=wsm_traffic&subPage=UsersOnline&subTab=summary\">"+onlineUserCnt+"</a>");
+                                            }
+                                        }
+                                    });
+                                    setTimeout(function() {
+                                        jQuery(".site_stats_panel .wsmBoxUPDdataTIP").removeClass("wmcRedBack").hide();
+                                    }, 1500);
+                                }
+                           });
+                       }
+                       if(arrLiveStats.length>0){
+                          setInterval(wsmFnSiteLiveStats, 10000);
+                       }});
+        </script><script id="generate-a11y">!function(){"use strict";if("querySelector"in document&&"addEventListener"in window){var e=document.body;e.addEventListener("mousedown",function(){e.classList.add("using-mouse")}),e.addEventListener("keydown",function(){e.classList.remove("using-mouse")})}}();</script><script src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/sticky.min.js.download" id="generate-sticky-js"></script>
+<!--[if lte IE 11]>
+<script src='https://mortenknudsen.net/wp-content/themes/generatepress/assets/js/classList.min.js?ver=3.2.4' id='generate-classlist-js'></script>
+<![endif]-->
+<script id="generate-menu-js-extra">
+var generatepressMenu = {"toggleOpenedSubMenus":"1","openSubMenuLabel":"Open Sub-Menu","closeSubMenuLabel":"Close Sub-Menu"};
+</script>
+<script src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/menu.min.js.download" id="generate-menu-js"></script>
+<script id="generate-navigation-search-js-extra">
+var generatepressNavSearch = {"open":"Open Search Bar","close":"Close Search Bar"};
+</script>
+<script src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/navigation-search.min.js.download" id="generate-navigation-search-js"></script>
+<script src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/comment-reply.min.js.download" id="comment-reply-js"></script>
+<script defer="" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/akismet-frontend.js.download" id="akismet-frontend-js"></script>
+	<script src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/e-202302.js.download" defer=""></script>
+	<script>
+		_stq = window._stq || [];
+		_stq.push([ 'view', {v:'ext',blog:'213641432',post:'525',tz:'1',srv:'mortenknudsen.net',j:'1:11.6'} ]);
+		_stq.push([ 'clickTrackerInit', '213641432', '525' ]);
+	</script>
+
+
+
+<img src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/g.gif" alt="" width="6" height="5" id="wpstats"><iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/widget_iframe.644279d1635fd969e87af94a98bd232b.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Microsoft Security, Azure, M365 &amp; Automation_howtoguide_files/saved_resource.html"></iframe></body></html>
